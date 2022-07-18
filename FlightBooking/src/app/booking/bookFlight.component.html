@@ -1,0 +1,203 @@
+<div class="row g-3">
+    <div class="col-xl-9">
+        <div class="card border-0">
+            <div class="card-body">
+                <h2>Book Flight Ticket</h2>
+                <form class="row g-3" [formGroup]="BookFlightModel.formBookFlightGroup">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="form-label">Email Id</label>
+                            <input [(ngModel)]="BookFlightModel.emailId" formControlName="emailIdControl"
+                                class="form-control" type="text" />
+
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">No Of Seats</label>
+                                <select class="form-select" [(ngModel)]="BookFlightModel.noOfSeats"
+                                formControlName="noOfSeatsControl">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row g-3">
+                        <label class="form-label">Passenger Details</label>
+                        <div class="col-md-4">
+                            <label class="form-label">Passenger name</label>
+                            <input [(ngModel)]="PassengerModel.passengerName" formControlName="passengerNameControl"
+                                class="form-control" type="text" />
+
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Gender</label>
+                            <select class="form-select" [(ngModel)]="PassengerModel.gender"
+                                formControlName="genderControl">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Age</label>
+                            <input [(ngModel)]="PassengerModel.age" formControlName="ageControl" class="form-control"
+                                type="text" />
+
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">National Id</label>
+                            <input [(ngModel)]="PassengerModel.nationalId" formControlName="nationalIdControl"
+                                class="form-control" type="text" />
+
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Seat No</label>
+                            <select class="form-select" [(ngModel)]="PassengerModel.seatNo"
+                                formControlName="seatNoControl">
+                                <option value="1A">1A</option>
+                                <option value="1B">1B</option>
+                                <option value="1C">1C</option>
+                                <option value="2A">2A</option>
+                                <option value="2B">2B</option>
+                                <option value="2C">2C</option>
+                                <option value="3A">3A</option>
+                                <option value="3B">3B</option>
+                                <option value="3C">3C</option>
+                                <option value="4A">4A</option>
+                                <option value="4B">4B</option>
+                                <option value="4C">4C</option>
+                            </select>
+
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Meal</label>
+                            <select class="form-select" [(ngModel)]="PassengerModel.meal" formControlName="mealControl">
+                                <option value="Veg">Veg</option>
+                                <option value="Non Veg">Non veg</option>
+                            </select>
+                        </div>
+
+                        <div class="py-4">
+                            <input type="submit" class="btn btn-primary" value="Add Passenger"
+                                (click)="AddPassenger()" />
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<form class="row g-3">
+    <div class="col-md-8">
+
+        <table class="table caption-top">
+            <caption>Passenger Details</caption>
+            <thead class="table table-striped-columns">
+                <tr class="table-primary">
+                    <th scope="col">Passenger Name</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Seat No</th>
+                    <th scope="col">National Id</th>
+                    <th scope="col">Meal</th>
+                </tr>
+            </thead>
+            <tr *ngFor="let res of PassengerModels">
+                <td>{{res.passengerName}}</td>
+                <td number>{{res.age}}</td>
+                <td>{{res.gender}}</td>
+                <td>{{res.seatNo}}</td>
+                <td>{{res.nationalId}}</td>
+                <td>{{res.meal}}</td>
+
+            </tr>
+        </table>
+    </div>
+    <div class="py-4">
+        <input type="submit" class="btn btn-primary" value="Book Flight" (click)="BookFlight()" />
+    </div>
+</form>
+<form class="row g-3" [formGroup]="BookFlightModel.formBookFlightGroup">
+
+    <div class="col-md-4">
+        <label class="form-label">Boarding </label>
+        <select class="form-select" [(ngModel)]="BookFlightModel.boardingPlace" formControlName="boardingPlaceControl">
+            <option value="Delhi">Delhi</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Chennai">Chennai</option>
+            <option value="Banglore">Banglore</option>
+            <option value="Indore">Indore</option>
+            <option value="Kochi">Kochi</option>
+        </select>
+        <!-- <p style="color:red" [hidden]="!hasError('required','boardingPlaceControl')">Boarding place is
+                required
+            </p> -->
+    </div>
+    <div class="col-md-4">
+        <label class="form-label">Destination</label>
+        <select class="form-select" [(ngModel)]="BookFlightModel.destination" formControlName="destinationControl">
+            <option value="Delhi">Delhi</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Chennai">Chennai</option>
+            <option value="Banglore">Banglore</option>
+            <option value="Indore">Indore</option>
+            <option value="Kochi">Kochi</option>
+        </select>
+        <!-- <p style="color:red" [hidden]="!hasError('required','destinationControl')">Destinationis
+                required</p> -->
+
+    </div>
+    <div class="col-md-4">
+        <label class="form-label">Flight number</label>
+        <input [(ngModel)]="BookFlightModel.flightNo" formControlName="flightNoControl" class="form-control"
+            type="text" />
+
+    </div>
+    <div class="col-md-4">
+        <label class="form-label">Start Date</label>
+        <input [(ngModel)]="BookFlightModel.startDateTime" formControlName="startDateTimeControl" class="form-control"
+            type="text" />
+
+    </div>
+    <div class="col-md-4">
+        <label class="form-label">Travel Time</label>
+        <input [(ngModel)]="BookFlightModel.endDateTime" formControlName="endDateTimeControl" class="form-control"
+            type="text" />
+
+    </div>
+
+    <div class="col-md-4">
+        <label class="form-label">Round Trip</label>
+        <select class="form-select" [(ngModel)]="BookFlightModel.isRoundTrip" formControlName="isRoundTripControl">
+            <option value=true>Yes</option>
+            <option value=false>No</option>
+        </select>
+        <!-- <p style="color:red" [hidden]="!hasError('required','isRoundTripControl')">Select Round trip
+                Yes/No</p> -->
+    </div>
+    <div class="col-md-4">
+        <label class="form-label">Round Trip date</label>
+        <input [(ngModel)]="BookFlightModel.roundTripStartDateTime" formControlName="roundTripStartDateTimeControl"
+            class="form-control" type="text" />
+
+    </div>
+    <div class="col-md-4">
+        <label class="form-label">Round Trip Travel Time</label>
+        <input [(ngModel)]="BookFlightModel.roundTripEndDateTime" formControlName="roundTripEndDateTimeControl"
+            class="form-control" type="text" />
+
+    </div>
+    <div class="col-md-4">
+        <label class="form-label">Round Trip Flight No</label>
+        <input [(ngModel)]="BookFlightModel.roundTripFlightNo" formControlName="roundTripFlightNoControl"
+            class="form-control" type="text" />
+
+    </div>
+
+</form>
